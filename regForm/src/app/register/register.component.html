@@ -1,0 +1,166 @@
+
+<section class="vh-100 gradient-custom">
+  <div  class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+            <form [formGroup]="regForm" (ngSubmit)="getDetails()">
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" [(ngModel)]="regsiterForm.name"  formControlName="username" id="userName" class="form-control form-control-lg" />
+                    <label class="form-label" for="firstName">User Name</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="password" [(ngModel)]="regsiterForm.pwd" formControlName="pwd" id="password" class="form-control form-control-lg" />
+                    <label class="form-label" for="password">Password</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="password" [(ngModel)]="regsiterForm.cnfpwd"  formControlName="cnfpwd" id="cnfPassword" class="form-control form-control-lg" />
+                    <label class="form-label" for="cnfPassword">Confirm Password</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+                  <label class="form-label" for="languages">Languages Known</label><br>
+                  <input type="checkbox" [(ngModel)]="knownLang[0]" [ngModelOptions]="{standalone:true}" id="language1" value="english">&nbsp;
+                  <label for="language1">{{languages[0]}}</label>&nbsp;
+                  <input type="checkbox" [(ngModel)]="knownLang[1]" [ngModelOptions]="{standalone:true}" id="Hindi" value="hindi">&nbsp;
+                  <label for="Hindi">{{languages[1]}}</label>&nbsp;
+                  <input type="checkbox" [(ngModel)]="knownLang[2]" [ngModelOptions]="{standalone:true}" id="French" value="french">&nbsp;
+                  <label for="French">{{languages[2]}}</label><br>
+                  <!-- <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required> -->
+                  <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <input type="date" [(ngModel)]="regsiterForm.dob" formControlName="dob" class="form-control form-control-lg" id="birthdayDate" max="{{date | date:'yyyy-MM-dd'}}"/>
+                    <label for="birthdayDate" class="form-label">Birthday</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <h6 class="mb-2 pb-1">Gender: </h6>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" [(ngModel)]="regsiterForm.gender" formControlName="gender" type="radio" name="gender" id="femaleGender"
+                      value="female" checked />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" [(ngModel)]="regsiterForm.gender" formControlName="gender" type="radio" name="gender" id="maleGender"
+                      value="male" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" [(ngModel)]="regsiterForm.gender" formControlName="gender" type="radio" name="gender" id="otherGender"
+                      value="other" />
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="email" [(ngModel)]="regsiterForm.email" formControlName="email" id="emailAddress" class="form-control form-control-lg" />
+                    <label class="form-label" for="emailAddress">Email</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="tel" [(ngModel)]="regsiterForm.phoneNumber" formControlName="phoneNumber" id="phoneNumber" class="form-control form-control-lg" />
+                    <label class="form-label" for="phoneNumber">Phone Number</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <select class="select form-control-lg" [(ngModel)]="regsiterForm.country" formControlName="country">
+                    <option value="1" disabled>Choose country</option>
+                    <option  value="India">India</option>
+                    <option  value="USA">USA</option>
+                    <option  value="France">France</option>
+                  </select>
+                  <label class="form-label select-label">Choose country</label>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <select class="select form-control-lg" [(ngModel)]="regsiterForm.securityquestion"  formControlName="securityquestion">
+                    <option value="1" disabled>Choose </option>
+                    <option  value="What is your school name?">What is your school name?</option>
+                    <option  value="What is your pet's name?">What is your pet's name?</option>
+                    <option  value="What is your grandfather's name?">What is your grandfather's name?</option>
+                  </select>
+                  <label class="form-label select-label">Security Question</label>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" [(ngModel)]="regsiterForm.securityans" formControlName="securityans" id="answer" class="form-control form-control-lg" />
+                    <label class="form-label" for="password">Answer</label>
+                  </div>
+  
+                </div>
+              </div>
+              <form>
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                  <label for="avatar">Upload Avatar</label>
+                  <input type="file" class="form-control-file" id="avatar" (change)="onUpload($event)" >
+                </div>
+                <div class="mt-4 pt-2 image-prew">
+                  <img [src]="myImg" width="100px"> 
+                </div>
+  
+                </div>
+                
+              </form>
+              
+              <div class="submit-row">
+                <div>
+                  <button formControlName="file" class="btn btn-primary btn-lg"  type="submit" value="Submit" >Submit</button>
+                </div>
+                <div>
+                  <p class="log_in"> Already registered? <a routerLink="/login">Log in</a></p>
+                </div>
+              </div>
+
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
